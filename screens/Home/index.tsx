@@ -27,9 +27,12 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {loadingMovies ? <Text>Carregando...</Text> :
         <FlatList
+          contentContainerStyle={styles.list}
           data={movies}
+          numColumns={3}
           onEndReached={loadMovies}
-          onEndReachedThreshold={0.2}
+          onEndReachedThreshold={0.8}
+          style={styles.listContainer}
           renderItem={({ item: movie }) => (
             <MovieCard movie={movie} key={movie.id}></MovieCard>
           )}

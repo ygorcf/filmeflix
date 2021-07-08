@@ -1,14 +1,19 @@
 import { StyleSheet } from 'react-native';
 
+// import Colors from '../../constants/Colors'
+
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    color: '#fff',
+    width: '100%'
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  list: {
+  },
+  listContainer: {
+    width: '100%',
   },
   separator: {
     marginVertical: 30,
