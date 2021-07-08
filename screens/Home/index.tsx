@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { loadMovies as actionLoadMovies } from '../../store/reducers/homeMovies';
 
 export default function HomeScreen() {
-  const movies = useSelector((state: RootStoreState) => state.homeMovies.results)
+  const moviesByGenre = useSelector((state: RootStoreState) => state.homeMovies.results)
   const loadingMovies = useSelector((state: RootStoreState) => state.homeMovies.loading)
   const dispatch = useDispatch()
 
@@ -28,13 +28,25 @@ export default function HomeScreen() {
       {loadingMovies ? <Text>Carregando...</Text> :
         <FlatList
           contentContainerStyle={styles.list}
-          data={movies}
-          numColumns={3}
+          data={moviesByGenre}
           onEndReached={loadMovies}
           onEndReachedThreshold={0.8}
           style={styles.listContainer}
-          renderItem={({ item: movie }) => (
-            <MovieCard movie={movie} key={movie.id}></MovieCard>
+          renderItem={({ item: genre }) => (
+            <View>
+              <Text>{ genre.name }</Text>
+              <FlatList
+                contentContainerStyle={styles.list}
+                data={genre.movies}
+                horizontal={true}
+                onEndReached={loadMovies}
+                onEndReachedThreshold={0.8}
+                style={styles.listContainer}
+                renderItem={({ item: movie }) => (
+                  <MovieCard movie={movie} key={movie.id}></MovieCard>
+                )}
+              ></FlatList>
+            </View>
           )}
         ></FlatList>
       }
