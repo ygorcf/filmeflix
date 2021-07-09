@@ -6,22 +6,22 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     color: '#fff',
     width: '100%'
   },
-  list: {
+  image: {
+      width: 200,
+      height: 300
   },
-  listContainer: {
-    width: '100%',
+  title: {
+    fontSize: 20
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  originalTitle: {
+    fontSize: 14,
+    marginBottom: 8
   },
-  genreTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
+  description: {
+    marginBottom: 20
   }
 });

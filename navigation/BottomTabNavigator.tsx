@@ -11,8 +11,9 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabHomeScreen from '../screens/Home';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabHomeParamList, TabTwoParamList } from '../types';
+import MovieDetailsScreen from '../screens/MovieDetails';
+import MyList from '../screens/MyList';
+import { BottomTabParamList, TabHomeParamList, TabMyListParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -32,8 +33,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="TabMyList"
+        component={TabMyListNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -54,25 +55,30 @@ const TabOneStack = createStackNavigator<TabHomeParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator initialRouteName="TabHomeScreen">
       <TabOneStack.Screen
         name="TabHomeScreen"
         component={TabHomeScreen}
+        options={{ headerTitle: 'Início' }}
+      />
+      <TabOneStack.Screen
+        name="TabHomeMovieDetailsScreen"
+        component={MovieDetailsScreen}
         options={{ headerTitle: 'Início' }}
       />
     </TabOneStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const TabTwoStack = createStackNavigator<TabMyListParamList>();
 
-function TabTwoNavigator() {
+function TabMyListNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        name="TabMyListScreen"
+        component={MyList}
+        options={{ headerTitle: 'Minha Lista' }}
       />
     </TabTwoStack.Navigator>
   );
